@@ -39,9 +39,14 @@ code {
 .note.new{
   background-color: #67d7cc;
 }
-.delete-icon  {
+.icon  {
   /* background-color: red;s */
   cursor: pointer;
+}
+.edit-text{
+  background-color: transparent;
+  border:none;
+  outline: none;
 }
 
 textarea{
@@ -59,6 +64,11 @@ textarea{
   cursor: pointer;
 }
 .note-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.note-footer-inside{
   display: flex;
   justify-content: space-between;
   align-items: center;

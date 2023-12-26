@@ -20,10 +20,30 @@ function App() {
     };
     setNotes([...notes, newNote]);
   };
+  const editNote = (id, newText) => {
+    console.log(id, newText);
+    const date=new Date();
+    const newNotes = notes.map((note) =>
+      note.id === id
+        ? { id, text: newText, date: date.toLocaleDateString() }
+        : note
+    );
+    setNotes(newNotes);
+  };
   const deleteNote = (id) => {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
   };
+  //useEffect is a hook that allows us to run a function after every render of the component
+  //useEffect takes two arguments: a callback function and a dependency array
+  //the callback function is the function that will run after every render
+  //the dependency array is an array of variables that the useEffect hook will watch
+  //if any of the variables in the dependency array change, the useEffect hook will run the callback function
+  //if the dependency array is empty, the useEffect hook will only run the callback function once after the first render
+  //if the dependency array is not provided, the useEffect hook will run the callback function after every render
+  //if the dependency array is provided with variables, the useEffect hook will run the callback function after every render if any of the variables in the dependency array change
+  //if the dependency array is provided with variables, the useEffect hook will run the callback function once after the first render if none of the variables in the dependency array change
+
   useEffect(() => {
     const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
     console.log("Read from local storage:", savedNotes);
@@ -48,6 +68,7 @@ function App() {
           )}
           handleNoteSave={addNote}
           handleNoteDelete={deleteNote}
+          handleNoteEdit={editNote}
         />
       </div>
     </div>
